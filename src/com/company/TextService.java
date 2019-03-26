@@ -1,13 +1,11 @@
 package com.company;
 
-public class TextService implements IVariableMethod {
-
+public class TextService implements ITextService{
 
     public String staticText() {
         return "Some static text";
     }
 
-    @Override
     public String variable(String variable) {
         return variable;
     }

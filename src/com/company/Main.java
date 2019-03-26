@@ -9,10 +9,10 @@ public class Main {
     }
 
     public static void taskProxy() {
-        IVariableMethod method = (IVariableMethod) Proxy.newProxyInstance(
+        ITextService textService = (ITextService)Proxy.newProxyInstance(
                 TextService.class.getClassLoader(),
-                new Class[]{IVariableMethod.class},
+                TextService.class.getInterfaces(),
                 new ProxyObject());
-        System.out.println(method.variable("server.port = ${port}"));
+        System.out.println(textService.variable("server.port = ${port}"));
     }
 }

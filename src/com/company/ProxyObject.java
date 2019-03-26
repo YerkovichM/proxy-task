@@ -21,14 +21,14 @@ public class ProxyObject implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
         if (m.getName().equals(variableMethod.getName())) {
-            return proxyVariable(proxy, (String) args[0]);
+            return proxyVariable((String) args[0]);
         } else {
             throw new InternalError(
                     "unexpected Object method dispatched: " + m);
         }
     }
 
-    protected String proxyVariable(Object proxy, String args) {
+    protected String proxyVariable(String args) {
         Matcher m = Pattern.compile("\\$\\{(.*?)}").matcher(args);
         if (m.find()) {
             String res = System.getProperty(m.group(1), "");
